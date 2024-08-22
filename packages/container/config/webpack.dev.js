@@ -8,9 +8,7 @@ const devConfig = {
     devServer: {
         host: '0.0.0.0',
         port: 8080,
-        historyApiFallback: {
-            index: 'index.html'
-        },
+        historyApiFallback: true,
         watchOptions: {
             poll: 1000,
         }
