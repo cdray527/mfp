@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 8081
+EXPOSE 8082
 
-CMD ["sleep", "infinity"]
+CMD ["npm", "start"]
