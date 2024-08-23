@@ -16,6 +16,19 @@ services:
     volumes:
       - ../packages/container:/usr/src/app
       - /usr/src/app/node_modules
+  marketing:
+    image: mfp/react:latest
+    container_name: mfp-marketing
+    build:
+      context: ../packages/marketing
+      dockerfile: Dockerfile
+    ports:
+      - '8081:8081'
+    networks:
+      - mfp-network
+    volumes:
+      - ../packages/marketing:/usr/src/app
+      - /usr/src/app/node_modules
   auth:
     image: mfp/react:latest
     container_name: mfp-auth
@@ -29,29 +42,16 @@ services:
     volumes:
       - ../packages/auth:/usr/src/app
       - /usr/src/app/node_modules
-  # dashboard:
-  #   image: mfp/vue:latest
-  #   container_name: mfp-dashboard
-  #   build:
-  #     context: ../packages/dashboard
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - '8083:8083'
-  #   networks:
-  #     - mfp-network
-  #   volumes:
-  #     - ../packages/dashboard:/usr/src/app
-  #     - /usr/src/app/node_modules
-  marketing:
-    image: mfp/react:latest
-    container_name: mfp-marketing
+  dashboard:
+    image: mfp/vue:latest
+    container_name: mfp-dashboard
     build:
-      context: ../packages/marketing
+      context: ../packages/dashboard
       dockerfile: Dockerfile
     ports:
-      - '8081:8081'
+      - '8083:8083'
     networks:
       - mfp-network
     volumes:
-      - ../packages/marketing:/usr/src/app
+      - ../packages/dashboard:/usr/src/app
       - /usr/src/app/node_modules

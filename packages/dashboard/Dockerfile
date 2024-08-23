@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8083
 
-CMD ["sleep", "infinity"]
+CMD ["npm", "start"]
