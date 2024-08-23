@@ -1,8 +1,8 @@
-import { mount } from 'marketing/MarketingPage';
+import { mount } from 'auth/AuthPage';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default () => {
+export default ({ onSignIn }) => {
     const ref = useRef(null);
     const history = useHistory();
 
@@ -10,13 +10,14 @@ export default () => {
         const { onParentNavigate } = mount(ref.current, {
             initialPath: history.location.pathname,
             onNavigate: ({ pathname: nextPathname }) => {
-                console.log('navigating detected in marketing page', nextPathname);
+                console.log('navigating detected in auth page', nextPathname);
                 const { pathname } = history.location;
 
                 if ( pathname !== nextPathname) {
                     history.push(nextPathname);
                 }
-            }
+            },
+            onSignIn,
         });
 
         history.listen(onParentNavigate);

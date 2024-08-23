@@ -13,6 +13,9 @@ const devConfig = {
             poll: 1000,
         }
     },
+    output: {
+        publicPath: 'http://localhost:8082/',
+    },
     plugins: [
         new ModuleFederationPlugin({
             name: 'auth',
